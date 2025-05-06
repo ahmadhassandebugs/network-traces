@@ -1,3 +1,6 @@
+# Trace directories and files that should be ignored by git
+cooked_traces/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
