@@ -13,18 +13,21 @@ network-traces/
 ├── metadata/               # Metadata JSON files per trace
 │   └── trace1.json
 ├── processors/             # Trace processing scripts per trace type
-│   └── trace_1_processor.py
+│   └── base.py
+│   ├── trace1.py
 ├── dataloader/             # Shared numpy-based trace loader
 │   └── dataloader.py
 ├── tools/                  # Conversion tools (e.g., mm_trace_gen)
 │   └── mm_trace_gen.py
+├── run.py                  # Main script to run the processing pipeline
 ├── README.md
-└── requirements.txt
+|── requirements.txt
+|── setup.sh
+|── .gitignore
 ```
 
 ```json
 {
-  "name": "trace1",
   "source": "WiFi 802.11ac",
   "label": "wifi-ac",
   "type": "raw",
@@ -34,7 +37,7 @@ network-traces/
   "unit": "Mbps",
   "direction": "downlink",
   "download_url": "https://example.com/wifi_ac_trace1.zip",
-  "processor_script": "processors/wifi_ac_processor.py"
+  "url": "https://example.com/"
 }
 ```
 

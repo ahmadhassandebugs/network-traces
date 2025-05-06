@@ -1,0 +1,11 @@
+{
+    "source": "FCC data release",
+    "label": "fixed",
+    "type": "raw",
+    "description": "Monthly FCC data release",
+    "date": "2023-01-01",
+    "granularity_secs": 1,
+    "unit": "Mbps",
+    "direction": "both",
+    "download_url": "https://data.fcc.gov/download/measuring-broadband-america/2023/data-raw-2023-jan.tar.gz"
+}

@@ -1,0 +1,11 @@
+{
+    "source": "SIGCOMM 2021 5G study",
+    "label": "cellular",
+    "type": "raw",
+    "description": "SIGCOMM 2021 5G study - data collected from 5G operators in the Minneapolis and Ann Arbor areas. It contains 4G/5G and mmwave/low-band/mid-band traces.",
+    "date": "2021-09-15",
+    "granularity_secs": 1,
+    "unit": "Mbps",
+    "direction": "both",
+    "url": "https://github.com/SIGCOMM21-5G/artifact/tree/main/Power-Model"
+}
