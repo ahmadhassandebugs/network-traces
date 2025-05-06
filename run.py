@@ -1,6 +1,8 @@
+import logging
 import argparse
 
 from processors.trace1 import Trace1Processor
+
 
 def main():
     parser = argparse.ArgumentParser(description="Process trace files.")
@@ -16,7 +18,15 @@ def main():
                         help="Granularity in seconds")
     parser.add_argument("-c", "--clip_tput_mbps", type=float, nargs=2, default=[0.01, 2000.0],
                         help="Clip throughput in Mbps (min, max)")
+    parser.add_argument("-d", "--direction", type=str, default="both",
+                        help="Direction of the trace (e.g., uplink, downlink, both)")
+    parser.add_argument("-l", "--log_level", type=str, default="INFO",
+                        help="Logging level (e.g., DEBUG, INFO, WARNING, ERROR, CRITICAL)")
     args = parser.parse_args()
+    
+    logging.basicConfig(level=logging._nameToLevel.get(args.log_level.upper(), logging.INFO),
+                        format='%(asctime)s.%(msecs)03d - %(levelname)s - %(message)s',
+                        datefmt='%H:%M:%S')
 
     if args.trace == "trace1":
         processor = Trace1Processor(
@@ -30,7 +40,6 @@ def main():
         raise ValueError(f"Trace {args.trace} is not supported. Please choose a valid trace name.")
     
     processor.process_trace()
-
 
 if __name__ == "__main__":
     main()
