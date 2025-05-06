@@ -32,7 +32,6 @@ class Trace1Processor(BaseTraceProcessor):
                 dir_df = df[df['direction'] == dir][['timestamp', 'run_number', 'Throughput']]
                 if dir_df.empty:
                     raise ValueError(f"File {file} does not contain data for direction {dir}")
-                logging.debug(f"\t\tunique run numbers in {dir} data: {dir_df['run_number'].nunique()}")
                 dir_df['timestamp'] = pd.to_datetime(dir_df['timestamp'])
                 for run_number in dir_df['run_number'].unique():
                     run_df = dir_df[dir_df['run_number'] == run_number].copy(deep=True)
