@@ -70,6 +70,12 @@ class BaseTraceProcessor(ABC):
         
         :param extracted_files: List of extracted file paths.
         :return: dataframe containing parsed data.
+            - The dataframe should contain the following columns:
+                - time: Time in seconds
+                - run: Run number
+                - dir: Direction (uplink/downlink)
+                - tput: Throughput in Mbps
+                - file: File name
         """
         pass
 
