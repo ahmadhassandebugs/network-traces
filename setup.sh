@@ -47,38 +47,38 @@ fi
 
 # Check if the virtual environment directory exists
 if [ ! -d "$VENV_DIR" ]; then
-  echo "Creating virtual environment in $VENV_DIR..."
-  # Create the virtual environment using python3's venv module
-  python3 -m venv "$VENV_DIR"
-  if [ $? -ne 0 ]; then
-    echo "Error: Failed to create virtual environment."
-    exit 1
-  fi
+    echo "Creating virtual environment in $VENV_DIR..."
+    # Create the virtual environment using python3's venv module
+    python3 -m venv "$VENV_DIR"
+    if [ $? -ne 0 ]; then
+        echo "Error: Failed to create virtual environment."
+        exit 1
+    fi
 else
-  echo "Virtual environment '$VENV_DIR' already exists."
+    echo "Virtual environment '$VENV_DIR' already exists."
 fi
 
 # Activate the virtual environment using its absolute path
 echo "Activating virtual environment..."
 source "$VENV_DIR/bin/activate"
 if [ $? -ne 0 ]; then
-  echo "Error: Failed to activate virtual environment."
-  exit 1
+    echo "Error: Failed to activate virtual environment."
+    exit 1
 fi
 
 # Check if requirements.txt exists using its absolute path
 if [ -f "$REQUIREMENTS_FILE" ]; then
-  echo "Installing requirements from $REQUIREMENTS_FILE..."
-  # Install requirements using pip
-  pip install -r "$REQUIREMENTS_FILE"
-  if [ $? -ne 0 ]; then
-    echo "Error: Failed to install requirements."
-    deactivate
-    exit 1
-  fi
-  echo "Requirements installed successfully."
+    echo "Installing requirements from $REQUIREMENTS_FILE..."
+    # Install requirements using pip
+    pip install -r "$REQUIREMENTS_FILE"
+    if [ $? -ne 0 ]; then
+        echo "Error: Failed to install requirements."
+        deactivate
+        exit 1
+    fi
+    echo "Requirements installed successfully."
 else
-  echo "Warning: $REQUIREMENTS_FILE not found. Skipping installation of requirements."
+    echo "Warning: $REQUIREMENTS_FILE not found. Skipping installation of requirements."
 fi
 
 echo "To activate the virtual environment, run 'source $VENV_DIR/bin/activate'."
